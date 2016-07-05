@@ -69,11 +69,12 @@ void ofApp::onParticlesUpdate(ofShader& shader)
     shader.setUniform1f("radiusSquared", radius * radius);
     shader.setUniform1f("gravity", gravity);
     shader.setUniform1f("mouseAttraction", mouseAttraction);
-    ofVec3f attractor1(0.25 * ofGetWidth(), 0.25 * ofGetHeight(), 0.f);
-    shader.setUniform3fv("attractor1", attractor1.getPtr());
-    shader.setUniform1f("attraction1", attraction1);
+    ofVec3f attractor1pos(0.25 * ofGetWidth(), 0.25 * ofGetHeight(), 0.f);
+    shader.setUniform3fv("attractor1pos", attractor1pos.getPtr());
+    //shader.setUniform1f("attraction1", attraction1);
     ofVec3f attraction1v(cos(attractor1angle*DEG_TO_RAD), sin(attractor1angle*DEG_TO_RAD), 0);
-    shader.setUniform3fv("attractor1angle", attraction1v.getPtr());
+    attraction1v.scale(attraction1);
+    shader.setUniform3fv("attractor1force", attraction1v.getPtr());
 }
 
 //--------------------------------------------------------------

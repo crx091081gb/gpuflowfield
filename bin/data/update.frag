@@ -10,9 +10,9 @@ uniform float mouseAttraction;
 uniform float radiusSquared;
 uniform float elapsed;
 uniform float gravity;
-uniform vec3 attractor1;
-uniform float attraction1;
-uniform vec3 attractor1angle;
+uniform vec3 attractor1pos;
+uniform vec3 attractor1force;
+
 
 
 void main()
@@ -27,14 +27,14 @@ void main()
     vec3 force = step(distSquared, radiusSquared) * magnitude * normalize(direction);
     
     //vector point 1
-    vec3 dist = attractor1 - pos.xyz;
+    vec3 dist = attractor1pos - pos.xyz;
     //direction = vec3(cos(attractor1angle), sin(attractor1angle), 0.0);
-    direction = attractor1angle;
+    //direction = attractor1angle;
     //direction = vec3(1.0, 1.0, 0.0);
     distSquared = dot(dist, dist);
-    magnitude = attraction1 * (1.0 - distSquared / radiusSquared);
+    magnitude = length(attractor1force) * (1.0 - distSquared / radiusSquared);
     
-    force += step(distSquared, radiusSquared) * magnitude * normalize(direction);
+    force += step(distSquared, radiusSquared) * magnitude * normalize(attractor1force);
     
     // gravity
     force += vec3(0.0, gravity, 0.0);
