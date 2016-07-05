@@ -9,7 +9,7 @@ void ofApp::setup()
     //gui
     gui.setup();
     gui.add(gravity.set("gravity", -0.5, -10, 10));
-    gui.add(mouseAttraction.set("mouse attraction", 500, -1000, 1000));
+    gui.add(mouseAttraction.set("mouse attraction", 0, -1000, 1000));
     gui.add(radius.set("radius", 200, 0, 1000));
     gui.add(attractor1angle.set("angle 1", 0, 0, 360));
     gui.add(attraction1.set("attraction 1", 500, -1000, 1000));
@@ -64,17 +64,42 @@ void ofApp::update()
 void ofApp::onParticlesUpdate(ofShader& shader)
 {
     ofVec3f mouse(ofGetMouseX() - .5f * ofGetWidth(), .5f * ofGetHeight() - ofGetMouseY() , 0.f);
+    //cout << mouse.x << mouse.y << endl;
     shader.setUniform3fv("mouse", mouse.getPtr());
     shader.setUniform1f("elapsed", ofGetLastFrameTime());
     shader.setUniform1f("radiusSquared", radius * radius);
     shader.setUniform1f("gravity", gravity);
     shader.setUniform1f("mouseAttraction", mouseAttraction);
-    ofVec3f attractor1pos(0.25 * ofGetWidth(), 0.25 * ofGetHeight(), 0.f);
+    //
+    ofVec3f attractor1pos(-0.5*ofGetWidth(), 0.5*ofGetHeight(), 0.f);
     shader.setUniform3fv("attractor1pos", attractor1pos.getPtr());
-    //shader.setUniform1f("attraction1", attraction1);
-    ofVec3f attraction1v(cos(attractor1angle*DEG_TO_RAD), sin(attractor1angle*DEG_TO_RAD), 0);
+    
+    ofVec3f attraction1v(cos(-45*DEG_TO_RAD), sin(-45*DEG_TO_RAD), 0);
     attraction1v.scale(attraction1);
     shader.setUniform3fv("attractor1force", attraction1v.getPtr());
+    //
+    ofVec3f attractor2pos(0.5 * ofGetWidth(), 0.5 * ofGetHeight(), 0.f);
+    shader.setUniform3fv("attractor2pos", attractor2pos.getPtr());
+    
+    ofVec3f attraction2v(cos(225*DEG_TO_RAD), sin(225*DEG_TO_RAD), 0);
+    attraction2v.scale(attraction1);
+    shader.setUniform3fv("attractor2force", attraction2v.getPtr());
+    //
+    ofVec3f attractor3pos(0.75 * ofGetWidth(), 0.75 * ofGetHeight(), 0.f);
+    shader.setUniform3fv("attractor3pos", attractor3pos.getPtr());
+    
+    ofVec3f attraction3v(cos(270*DEG_TO_RAD), sin(280*DEG_TO_RAD), 0);
+    attraction3v.scale(0);
+    shader.setUniform3fv("attractor3force", attraction3v.getPtr());
+    //
+    ofVec3f attractor4pos(0.25 * ofGetWidth(), 0.75 * ofGetHeight(), 0.f);
+    shader.setUniform3fv("attractor4pos", attractor4pos.getPtr());
+    
+    ofVec3f attraction4v(cos(90*DEG_TO_RAD), sin(90*DEG_TO_RAD), 0);
+    attraction4v.scale(0);
+    shader.setUniform3fv("attractor4force", attraction4v.getPtr());
+    //
+    //shader.setUniformTexture(<#const string &name#>, <#const ofBaseHasTexture &img#>, <#int textureLocation#>);
 }
 
 //--------------------------------------------------------------
