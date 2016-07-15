@@ -5,25 +5,41 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>AFF78FB8-74E3-4910-8D7B-B8C2637E6F56</string>
+	<string>F667AC5A-B0C0-470F-9FC1-49B02C83740D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>gpu-particles-001</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>1B808D4EE260CF965FF9F40270539345D61FCB92</key>
+		<string>https://github.com/crx091081gb/gpuflowfield.git</string>
 		<key>380F9DBF23796FB83AEF2E01E21B58DD8BF55486</key>
 		<string>https://github.com/neilmendoza/ofxGpuParticles.git</string>
 	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>gpu-particles-001.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>1B808D4EE260CF965FF9F40270539345D61FCB92</key>
+		<string>../..</string>
 		<key>380F9DBF23796FB83AEF2E01E21B58DD8BF55486</key>
-		<string>ofxGpuParticles</string>
+		<string>../../../../../addons/ofxGpuParticles</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/neilmendoza/ofxGpuParticles.git</string>
+	<string>https://github.com/crx091081gb/gpuflowfield.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>380F9DBF23796FB83AEF2E01E21B58DD8BF55486</string>
+	<string>1B808D4EE260CF965FF9F40270539345D61FCB92</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1B808D4EE260CF965FF9F40270539345D61FCB92</string>
+			<key>IDESourceControlWCCName</key>
+			<string>gpu-particles-001</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

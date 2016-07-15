@@ -4,6 +4,7 @@
 // ping pong inputs
 uniform sampler2DRect particles0;
 uniform sampler2DRect particles1;
+uniform sampler2DRect flowField;
 
 uniform vec3 mouse;
 uniform float mouseAttraction;

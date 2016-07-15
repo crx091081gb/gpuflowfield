@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxGpuParticles.h"
 #include "ofxGui.h"
+#include "ofxOsc.h"
 
 class ofApp : public ofBaseApp
 {
@@ -15,10 +16,14 @@ public:
     ofParameter<float> attractor1angle;
     ofParameter<float> attraction1;
     
+    ofxOscReceiver receiver;
+    vector<ofVec3f> attractorGrid;
+    vector<bool> newVector;
+    
     void setup();
     void update();
     void draw();
-
+    
     void keyPressed  (int key);
     void keyReleased(int key);
     void mouseMoved(int x, int y );
