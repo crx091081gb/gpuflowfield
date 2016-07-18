@@ -101,8 +101,8 @@ void ofApp::onParticlesUpdate(ofShader& shader)
     shader.setUniform1f("radiusSquared", radius * radius);
     shader.setUniform1f("gravity", gravity);
     shader.setUniform1f("mouseAttraction", mouseAttraction);
-    ofVec3f attractor1pos(0.25 * ofGetWidth(), 0.25 * ofGetHeight(), 0.f);
-    shader.setUniform3fv("attractor1pos", attractor1pos.getPtr());
+    //ofVec3f attractor1pos(0.25 * ofGetWidth(), 0.25 * ofGetHeight(), 0.f);
+    //shader.setUniform3fv("attractor1pos", attractor1pos.getPtr());
     
     //
     //cout << attractorGrid[5].x << " " << attractorGrid[5].y << endl;
@@ -112,22 +112,50 @@ void ofApp::onParticlesUpdate(ofShader& shader)
     //ofVec3f attraction1v(cos(attractor1angle*DEG_TO_RAD), sin(attractor1angle*DEG_TO_RAD), 0);
     //attraction1v.scale(attraction1);
     //shader.setUniform3fv("attractor1force", attraction1v.getPtr());
-    
-    for (int i = 0; i < 16; i++) {
-        if (i == 5) {
-            ofVec3f attraction1v;
+    int i = 0;
+    for (int x = 0; x < 4; x++) {
+        for (int y = 0; y < 4; y++) {
+            char attractorPosName[15];
+            sprintf(attractorPosName, "attractor%dpos", i+1);
+            //cout << attractorPos << endl;
+            float xpos = ofMap(x, 0, 3, -.5f*ofGetWidth(), .5f*ofGetWidth()) + .125f*ofGetWidth();
+            float ypos = ofMap(y, 0, 3, -.5f*ofGetHeight(), .5f*ofGetHeight()) + .125f*ofGetHeight();
+            ofVec3f attractorPos(xpos, ypos, 0);
+            shader.setUniform3fv(attractorPosName, attractorPos.getPtr());
+            //
+            char attractorForceName[15];
+            sprintf(attractorForceName, "attractor%dforce", i+1);
+            ofVec3f attractionForce;
             if (newVector[i]) {
                 if (attractorGrid[i].length() > 1.0) {
-                    attraction1v = attractorGrid[i] * 200;
-                    cout << "new grid 5 " << attractorGrid[i].x << " " << attractorGrid[i].y << endl;
+                    attractionForce = attractorGrid[i] * 200;
+                    //cout << "new grid 5 " << attractorGrid[i].x << " " << attractorGrid[i].y << endl;
                     newVector[i].flip();
                 }
             } else {
                 
             }
-            shader.setUniform3fv("attractor1force", attraction1v.getPtr());
+            shader.setUniform3fv(attractorForceName, attractionForce.getPtr());
+            i++;
         }
     }
+    
+    
+//    for (int i = 0; i < 16; i++) {
+//        if (i == 5) {
+//            ofVec3f attraction1v;
+//            if (newVector[i]) {
+//                if (attractorGrid[i].length() > 1.0) {
+//                    attraction1v = attractorGrid[i] * 200;
+//                    cout << "new grid 5 " << attractorGrid[i].x << " " << attractorGrid[i].y << endl;
+//                    newVector[i].flip();
+//                }
+//            } else {
+//                
+//            }
+//            shader.setUniform3fv("attractor1force", attraction1v.getPtr());
+//        }
+//    }
 }
 
 //--------------------------------------------------------------

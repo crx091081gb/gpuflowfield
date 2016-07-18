@@ -22,7 +22,7 @@
 		<key>1B808D4EE260CF965FF9F40270539345D61FCB92</key>
 		<string>../..</string>
 		<key>380F9DBF23796FB83AEF2E01E21B58DD8BF55486</key>
-		<string>../../../../../addons/ofxGpuParticles</string>
+		<string>../../../addons/ofxGpuParticles</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/crx091081gb/gpuflowfield.git</string>
